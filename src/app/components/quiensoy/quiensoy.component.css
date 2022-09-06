@@ -1,0 +1,23 @@
+.medio{
+  position:fixed;
+
+}
+#container {
+  height: 400px;
+  width: 600px;
+  position: relative;
+}
+#image {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#text {
+  z-index: 100;
+  position: absolute;
+  color: #7E4E1E;
+  font-size: 24px;
+  font-weight: bold;
+  left: 320px;
+  top: 0px;
+}
