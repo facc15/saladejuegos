@@ -1,7 +1,42 @@
+<app-navbar [item]="this.auth.miUser.email"></app-navbar>
+<div class="colorcito">
+<div class="body" *ngIf="!this.spinner">
+  <div *ngIf="this.user$ | async as user; else noLog">
+  <button type="button" class="miBtn2" (click)="desloguear()">Desloguear</button>
+  <br><br>
 
 
-<br><br><br>
-<button type="button" class="miBtn" (click)="goToLogin()">Login</button>
-<br><br><br>
-<button type="button" class="miBtn" (click)="goToQuienSoy()">Quien soy?</button>
+  <button type="button" class="miBtn2" (click)="irASalaDeJuegos()">ir a Sala de juegos</button>
+  <br><br>
+  <button type="button" class="miBtn2" (click)="irAQuienSoy()">Quien soy?</button>
 
+
+
+  </div>
+
+
+  <ng-template #noLog>
+  <img class="logo" src="../../../assets/login.png" alt="login">
+    <div *ngIf="loguear">
+    <app-login (newItemEvent)="estaLogueado($event)"></app-login>
+      <p class="mt-3">No tienes cuenta? <a  (click)="irARegistro()">Registrarse</a></p>
+    <br><br>
+
+
+
+    </div>
+
+    <div *ngIf="registrar">
+      <app-registro (eventoRegistro)="estaRegistrado($event)"></app-registro>
+      <button type="button" class="miBtn2" (click)="irALogin()">Volver</button>
+
+    </div>
+
+  </ng-template>
+
+
+  </div>
+
+  <div *ngIf="this.spinner"> <app-spinner></app-spinner> </div>
+
+</div>

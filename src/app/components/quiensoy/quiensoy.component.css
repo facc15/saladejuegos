@@ -2,22 +2,35 @@
   position:fixed;
 
 }
-#container {
+
+.titles{
+  color:#7E4E1E;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 1px 1px 1px #251709;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-weight: 100px;
+  font-size: 40px;
+
+
+
+}
+
+.container {
   height: 400px;
   width: 600px;
   position: relative;
 }
-#image {
-  position: absolute;
-  left: 0;
-  top: 0;
+.image{
+  width: 370px;
+  height: 400px;
+
 }
-#text {
+.text {
   z-index: 100;
-  position: absolute;
   color: #7E4E1E;
   font-size: 24px;
   font-weight: bold;
-  left: 320px;
-  top: 0px;
+
 }

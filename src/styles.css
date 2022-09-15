@@ -3,10 +3,15 @@
   background-color: #EECC88;
   color: #7E4E1E;
   display: flex;
-  align-items:
-  center;
+  align-items:center;
   justify-content: center;
 
+}
+
+
+
+html, body{
+  height: 100%;
 }
 
 .miBtn {
@@ -68,3 +73,7 @@ font-family: Arial;
 }
 
 
+.toast-success{background-color:#51A351!important;}
+.toast-error{background-color:#BD362F!important;}
+.toast-info{background-color:#2F96B4!important;}
+.toast-warning{background-color:#F89406!important;}

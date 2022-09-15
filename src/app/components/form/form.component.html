@@ -1,0 +1,86 @@
+<form [formGroup]="this.cargarUsuario">
+  <div *ngIf="loguearse else registrarse" >
+  <div class="form-floating mb-3">
+    <label>Correo electrónico:</label>
+    <input  name="correo"  type="email" class="form-control" formControlName="email"   aria-describedby="emailHelp" placeholder="Ingrese correo">
+    <div class="alert-danger" >
+      <div class="container-error-messagge"  *ngIf="this.cargarUsuario.get('email')?.hasError('required') && this.cargarUsuario.get('email')?.touched">
+     El campo es requerido.
+       </div>
+       <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('email')?.hasError('email') && this.cargarUsuario.get('email')?.touched">
+     El email es inválido.
+       </div>
+   </div>
+
+  </div>
+  <div class="form-floating mb-3">
+    <label>Contraseña: </label>
+    <input  name="pass" formControlName="pass" type="password" class="form-control" placeholder="Ingrese contraseña">
+    <div class="alert-danger" >
+      <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('pass')?.hasError('required') && this.cargarUsuario.get('pass')?.touched" >
+     El campo es requerido.
+       </div>
+       <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('pass')?.hasError('minlength') && this.cargarUsuario.get('pass')?.touched">
+     El password es debe tener mínimo 6 caracteres.
+       </div>
+   </div>
+
+  </div>
+
+<button type="submit" class="miBtn2" (click)="enviarLogin()">Loguearse</button>
+
+</div>
+
+
+
+
+<ng-template #registrarse>
+  <div class="form-floating mb-3">
+    <label>Correo electrónico:</label>
+    <input name="correo"  type="email" class="form-control" formControlName="email"  aria-describedby="emailHelp" placeholder="Ingrese correo">
+    <div class="alert-danger" >
+      <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('email')?.hasError('required') && this.cargarUsuario.get('email')?.touched" >
+     El campo es requerido.
+       </div>
+       <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('email')?.hasError('email') && this.cargarUsuario.get('email')?.touched">
+     El email es inválido.
+       </div>
+   </div>
+
+  </div>
+  <div class="form-floating mb-3">
+    <label>Contraseña:</label>
+    <input name="pass" type="password" class="form-control" formControlName="pass"  placeholder="Ingrese contraseña">
+    <div class="alert-danger" >
+      <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('pass')?.hasError('required') && this.cargarUsuario.get('pass')?.touched" >
+     El campo es requerido.
+       </div>
+       <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('pass')?.hasError('minlength') && this.cargarUsuario.get('pass')?.touched">
+     El password es debe tener mínimo 6 caracteres.
+       </div>
+  </div>
+
+ </div>
+
+  <div class="form-floating mb-3">
+    <label for="floatingInput">Repetir Contraseña:</label>
+    <input id="pass2" name="pass2" type="password" class="form-control" formControlName="pass2"  placeholder="Ingrese nuevamente contraseña">
+    <div class="alert-danger" >
+      <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('pass2')?.hasError('required') && this.cargarUsuario.get('pass2')?.touched" >
+     El campo es requerido.
+       </div>
+       <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('pass2')?.hasError('minlength') && this.cargarUsuario.get('pass2')?.touched">
+     El password es debe tener mínimo 6 caracteres.
+       </div>
+   </div>
+
+  </div>
+
+
+<button type="submit" class="miBtn2" (click)="enviarRegistro()">Registrarse</button>
+
+</ng-template>
+
+
+</form>
+

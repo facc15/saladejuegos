@@ -1,3 +1,4 @@
+import { RegistroComponent } from './components/registro/registro.component';
 import { QuiensoyComponent } from './components/quiensoy/quiensoy.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
@@ -8,8 +9,9 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
   {path: 'quiensoy', component: QuiensoyComponent},
-
+  {path: '**', redirectTo: 'home', pathMatch: 'full'},
   //{path:'**', component: ErrorComponent}
 ];
 

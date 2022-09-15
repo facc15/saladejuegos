@@ -1,0 +1,15 @@
+.titles{
+  color:#7E4E1E;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 1px 1px 1px #251709;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-weight: 200px;
+  font-size: 40px;
+  left:500px;
+  top:0px;
+  position:fixed;
+
+
+}

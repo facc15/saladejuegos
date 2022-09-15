@@ -7,18 +7,44 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { QuiensoyComponent } from './components/quiensoy/quiensoy.component';
+import { FirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { firebaseConfig } from '../environments/firebaseConfig';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from './components/form/form.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    QuiensoyComponent
+    QuiensoyComponent,
+    FormComponent,
+    RegistroComponent,
+    NavbarComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    FirestoreModule,
+    AngularFireModule,
+    AngularFirestoreModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

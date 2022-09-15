@@ -1,7 +1,12 @@
 .titles{
   color:#7E4E1E;
   font-family: 'Poppins', sans-serif;
-  font-size: 34px;
-  font-weight: 600;
   text-shadow: 2px 2px 2px #251709;
+  display: flex;
+  align-items: center;
+
+}
+
+.miNav{
+  color: #f3f1ef;
 }
