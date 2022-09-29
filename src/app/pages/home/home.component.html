@@ -1,0 +1,42 @@
+<div class="central">
+  <div class="body">
+  <div *ngIf="this.user$ | async as user; else noLog">
+    <img class="imagen" src="./../../../assets/boys/boys5.png" width="100%" >
+
+
+
+  <button type="button" class="miBtn2" (click)="irASalaDeJuegos()">Sala de juegos</button>
+  <br><br>
+  <button type="button" class="miBtn2" (click)="irAChat()">Sala de Chat</button>
+  <br><br>
+  <button type="button" class="miBtn2" (click)="irAQuienSoy()">Quien soy?</button>
+  <br><br>
+  <button type="button" class="miBtn2" (click)="desloguear()">Cerrar sesión</button>
+
+<div *ngIf="this.chatActivo">
+  <app-chat></app-chat>
+</div>
+
+  </div>
+
+
+  <ng-template #noLog>
+  <img class="logo" src="../../../assets/login.png" alt="login">
+    <div *ngIf="loguear">
+    <app-login (newItemEvent)="estaLogueado($event)"></app-login>
+      <p class="mt-3">No tienes cuenta? <a class="link" (click)="irARegistro()">Registrarse</a></p>
+    <br><br>
+
+
+
+    </div>
+
+    <div *ngIf="registrar">
+      <app-registro (eventoRegistro)="estaRegistrado($event)"></app-registro>
+      <button type="button" class="miBtn2" (click)="irALogin()">Volver</button>
+
+    </div>
+
+  </ng-template>
+</div>
+</div>

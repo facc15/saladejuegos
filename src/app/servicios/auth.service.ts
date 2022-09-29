@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore} from '@angular/fire/compat/firestore';
 import * as firebase from 'firebase/app';
-import { getAuth, getIdToken, onAuthStateChanged, User } from "firebase/auth";
+import { getAuth, getIdToken, onAuthStateChanged, User, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { first } from 'rxjs/operators';
 //firestore
 import { collection, addDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class AuthService {
   public miUser :any={};
   public token !: string;
 
-  constructor(private afs:AngularFirestore, public afAuth: AngularFireAuth, private toastr: ToastrService) {
+  constructor(private router: Router,private afs:AngularFirestore, public afAuth: AngularFireAuth, private toastr: ToastrService) {
 
     this.afAuth.authState.subscribe(u=>{
       console.log("estado:" ,u);
@@ -61,6 +62,14 @@ export class AuthService {
     }
   }
 
+  loguearGoogle()
+  {
+    this.afAuth.signInWithPopup(new GoogleAuthProvider).then(()=>{
+    console.log("Se logueo bien con google");
+    this.router.navigateByUrl('home');
+    }).catch((error)=>{console.log(error)});
+  }
+
 
 
   async loguear(email:string, password:string){
@@ -68,14 +77,14 @@ export class AuthService {
     const resultado= await this.afAuth.signInWithEmailAndPassword(email,password).then((user)=>{
 
       this.toastr.success('El usuario se logueó satistactoriamente', 'Exito',{
-        timeOut: 2000,
+        timeOut: 1500,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-center'
         });
       console.log(user);
     }).catch((error)=>{console.log(error)
       this.toastr.error(this.firebaseError(error.code),'Error',{
-        timeOut: 2000,
+        timeOut: 1500,
         progressAnimation: 'decreasing',
         positionClass: 'toast-bottom-center'
       });});

@@ -1,18 +1,21 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" >Usuario: {{item}}</a>
+  <a class="navbar-brand" *ngIf="this.user$ | async as user;">
+    <h5 *ngIf="this.user.displayName else notDisplay">{{this.user.displayName}}</h5>
+    <ng-template #notDisplay>
+      <h5>{{this.user.email}}</h5>
+    </ng-template>
+
+  </a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
 
-
-      <li>
-        <a class="titles">Sala de juegos</a>
-      </li>
-    </ul>
-
-
+    <span class="navbar-text ml-lg-5">
+      <a class="nav-link active"></a>
+    </span>
   </div>
 </nav>
 

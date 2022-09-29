@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-navbar',
@@ -9,18 +11,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   @Input() item: string="";
   miUsuario!: string;
+  public user$: Observable<any> =this.auth.afAuth.user;
+  public user:any;
 
-  constructor(private auth: AuthService ) {
+  constructor(private auth: AuthService,private router: Router ) {
 
   }
 
-  ngOnInit(): void {
-    if(this.auth.miUser.email!=null)
-    {
-      this.miUsuario= this.auth.miUser.email;
-    }
-
-
+  async ngOnInit() {
+    this.user = await this.auth.getUserLog();
 
   }
 
@@ -28,6 +27,7 @@ export class NavbarComponent implements OnInit {
   desloguear()
   {
     this.auth.desloguear();
+this.router.navigateByUrl('home');
   }
 
 }

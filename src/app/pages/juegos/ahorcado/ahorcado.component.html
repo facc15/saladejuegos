@@ -1,0 +1,58 @@
+<div class="miDiv container grid-md">
+  <div class="columns contenedor" *ngIf="this.seJuega else noSeJuega">
+      <div class="column col-12">
+          <h2 style="text-align:center;">Adivina la palabra</h2>
+      </div>
+          <div >
+                  <img class="imagen" id="palo" [src]="this.imagen" width="250px" height="300px" alt="Palo">
+
+          </div>
+    <div class="posPalabra">
+      <span class="palabra" *ngFor="let item of this.palabraSecreta">{{item}}</span>
+    </div>
+<br><br>
+
+      <span class="opciones" *ngFor="let item of this.letras" (click)="letraElegida(item)">
+        {{item}}
+      </span>
+      <br><br><br><br>
+      <span style="font-size: 20px; left: 20%;">Errores: {{this.errores}}</span>
+  </div>
+
+  <ng-template #noSeJuega>
+    <div>
+
+    </div>
+  <div *ngIf="!this.gana && !this.pierde">
+      <div style="align-items:center; display: flex;">
+
+      </div>
+      <div style="top: 20%; position: absolute;	display: flex; justify-content: center;">
+
+      <button type="button" style="bottom: 20%;" class="btn btn-outline-secondary btn-lg btn-block" (click)="empezarJuego()">JUGAR</button>
+      <br>
+      <img src="../../../../assets/juegos/ahorcado/ahorcado2.png" width="40%" height="40%" alt="">
+      <button type="button" style="bottom: 20%;" class="btn btn-outline-danger btn-lg btn-block">VOLVER</button>
+      </div>
+  </div>
+<div class="center">
+  <div class="text-align: center; " *ngIf="this.gana">
+      <h2>GANASTE!!!!!!!!!</h2>
+      <button type="button" style="bottom: 20%;" class="btn btn-outline-secondary btn-lg btn-block" (click)="empezarJuego()">VOLVER A JUGAR</button>
+      <br>
+      <button type="button" style="bottom: 20%;" class="btn btn-outline-danger btn-lg btn-block" (click)="volver()">VOLVER</button>
+      <br>
+  </div>
+  <div class="text-align: center; " *ngIf="this.pierde">
+    <h2>PERDISTE!!!!!!!!!</h2>
+    <button type="button" style="bottom: 20%;" class="btn btn-outline-secondary btn-lg btn-block" (click)="empezarJuego()">VOLVER A JUGAR</button>
+    <br>
+    <button type="button" style="bottom: 20%;" class="btn btn-outline-danger btn-lg btn-block" (click)="volver()">VOLVER</button>
+  </div>
+</div>
+  </ng-template>
+
+</div>
+
+
+

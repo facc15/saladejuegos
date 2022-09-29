@@ -1,0 +1,30 @@
+
+.logo{
+height: 100px;
+margin-bottom: 5px;
+}
+
+.imagen{
+  object-fit: cover;
+}
+
+a{
+  cursor: pointer;
+
+}
+
+
+.body{
+
+  width: 100%;
+  max-width: 330px;
+  margin: auto;
+  padding: 15px;
+  text-align: center;
+}
+.central{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+

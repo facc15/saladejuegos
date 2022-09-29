@@ -1,0 +1,105 @@
+.miDiv{
+  background-image: linear-gradient(120deg, #EECC88 0%, #7E4E1E 100%);
+  font: 400 16px/1.5em sans-serif;
+  height: 20px;
+  width: auto;
+}
+
+.imagen{
+  top:10%;
+  left: 10;
+  display: block;
+}
+
+buttom{
+  justify-content: center;
+}
+
+.container{
+  background-color: #fff;
+  height: 80%;
+  padding: 2em;
+}
+
+.contenedor {
+  position: relative;
+}
+.palabra {
+  top: 20%;
+  margin-top: 20%;
+  height: 30%;
+  width: 50%;
+  size: 20px;
+
+  font-size: 5em;
+  font-weight: 100;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.posPalabra{
+  top: 40%;
+  left: 30%;
+  width: 70%;
+  height: 40%;
+
+  position: absolute;
+}
+
+.divOpciones{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+
+}
+
+.center{
+  position: relative;
+  top: 35%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.opciones{
+  bottom: 50%;
+  border-radius: 20%;
+  border: 3px solid #7E4E1E;
+  height: 30%;
+  width: 5%;
+  bottom: 70%;
+  text-align: center;
+  background-color: white;
+  color: black;
+  display: block;
+  float: left;
+  cursor: pointer;
+  position: relative;
+
+}
+
+.abc {
+  display: inline-block;
+  padding: 0.7em;
+  margin: 3px;
+  width: 60px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px dashed #5755d9;
+  text-transform: uppercase;
+}
+
+.oculto {
+  display: inline-block;
+  padding: 0.5em;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 5px;
+  width: 50px;
+  text-align: center;
+  border-bottom: 3px solid #666;
+  text-transform: uppercase;
+}
+
+#palo{
+  transform: scaleX(-1);
+}
+

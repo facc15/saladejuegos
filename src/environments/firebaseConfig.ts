@@ -1,8 +1,8 @@
 export const  firebaseConfig = {
-  apiKey: "AIzaSyAm1JgF2L3ld64whN1oi7g-Q6gKUzN0wic",
-  authDomain: "rochafacundo4b-saladejuegos.firebaseapp.com",
-  projectId: "rochafacundo4b-saladejuegos",
-  storageBucket: "rochafacundo4b-saladejuegos.appspot.com",
-  messagingSenderId: "726792843451",
-  appId: "1:726792843451:web:957033c13a134d9751f99e"
+  apiKey: "AIzaSyDV7IISCTLDhPYu-M8it-uvLa3oEuQe9HI",
+  authDomain: "saladejuegos-559fa.firebaseapp.com",
+  projectId: "saladejuegos-559fa",
+  storageBucket: "saladejuegos-559fa.appspot.com",
+  messagingSenderId: "182674480705",
+  appId: "1:182674480705:web:5533daedbe0ac8632ab0c0"
 };

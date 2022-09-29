@@ -1,0 +1,21 @@
+<div class="container main-container">
+  <div class="ventanaChat">
+    <h2 style="text-align:center;">Chat</h2>
+
+    <div class="msg" id="msg">
+        <div *ngFor="let mensaje of this.chatService.mensajes"
+        [ngClass]="{'text-right': this.chatService.usuario.uid == mensaje.uid,
+                    'text-left': this.chatService.usuario.uid != mensaje.uid}">
+        <span class="badge badge-pill badge-primary"
+        [ngClass]="{'badge-success': this.chatService.usuario.uid == mensaje.uid,
+                    'badge-danger': this.chatService.usuario.uid != mensaje.uid}">{{mensaje.hora}} - {{mensaje.nombre}}:</span>
+        <p>{{mensaje.mensaje}}</p>
+        </div>
+
+
+   </div>
+   <input class="form-control btn-Chat" type="text" name="mensaje" [(ngModel)]="this.mensaje" (keyup.enter)="enviarMensaje()" placeholder="Enviar mensaje">
+  </div>
+
+</div>
+

@@ -1,0 +1,39 @@
+<form [formGroup]="this.cargarUsuario">
+  <div class="form-floating mb-3">
+    <label>Correo electrónico:</label>
+    <input  name="correo"  type="email" class="form-control" formControlName="email"   aria-describedby="emailHelp" placeholder="Ingrese correo">
+    <div class="alert-danger" >
+      <div class="container-error-messagge"  *ngIf="this.cargarUsuario.get('email')?.hasError('required') && this.cargarUsuario.get('email')?.touched">
+     El campo es requerido.
+       </div>
+       <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('email')?.hasError('email') && this.cargarUsuario.get('email')?.touched">
+     El email es inválido.
+       </div>
+   </div>
+
+  </div>
+  <div class="form-floating mb-3">
+    <label>Contraseña: </label>
+    <input  name="pass" formControlName="pass" type="password" class="form-control" placeholder="Ingrese contraseña">
+    <div class="alert-danger" >
+      <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('pass')?.hasError('required') && this.cargarUsuario.get('pass')?.touched" >
+     El campo es requerido.
+       </div>
+       <div class="container-error-messagge" *ngIf="this.cargarUsuario.get('pass')?.hasError('minlength') && this.cargarUsuario.get('pass')?.touched">
+     El password es debe tener mínimo 6 caracteres.
+       </div>
+   </div>
+
+  </div>
+
+<button type="submit" class="miBtn2" (click)="enviarLogin()">Iniciar sesión</button>
+<br><br>
+<button type="submit" class="miBtn2" (click)="loguearConGoogle()">Usar Google</button>
+
+
+</form>
+
+
+
+
+
