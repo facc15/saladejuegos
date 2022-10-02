@@ -11,7 +11,7 @@ export class AhorcadoComponent implements OnInit {
   public seJuega: boolean;
   public palabraSecreta!: string[];
   public palabra!: string;
-  public letras: any[];
+  public letras!: any[];
   public palabras: string[];
   public numero!: number;
   public arrayCaracteres!: string[];
@@ -25,8 +25,7 @@ export class AhorcadoComponent implements OnInit {
 
   constructor(private router: Router) {
     this.seJuega=false;
-    this.letras=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T',
-                  'U','X','Y','Z'];
+
     this.palabras= this.cargarPalabras();
     this.palabra="";
     this.palabraSecreta=[];
@@ -54,6 +53,8 @@ export class AhorcadoComponent implements OnInit {
     this.seJuega=true;
     this.numero= Math.floor(Math.random() * (8-0) + 0);
     this.palabra=this.palabras[this.numero];
+    this.letras=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T',
+    'U','X','Y','Z'];
 
     this.arrayCaracteres= Array.from(this.palabra);
     let i=0;
@@ -65,6 +66,7 @@ export class AhorcadoComponent implements OnInit {
 
   letraElegida(letra: string)
   {
+    this.letras= this.letras.filter(letri=> letri!= letra);
     let terminado=true;
     let esta=false;
     let index=0;

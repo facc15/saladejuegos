@@ -65,7 +65,27 @@ font-family: Arial;
   text-decoration: none;
 }
 
+.miBtn2:active{
+  transform: scale(0.94);
+  box-shadow: 3px 2px 1px rgb(#EECC88, #7E4E1E, black);
+}
+
+.miBtn1:active{
+  transform: scale(0.94);
+  box-shadow: 3px 2px 1px rgb(#EECC88, #7E4E1E, black);
+}
+
 .miBtn:hover {
+  background: #2079b0;
+  background-image: -webkit-linear-gradient(top, #7E4E1E, #EECC88);
+  background-image: -moz-linear-gradient(top, #7E4E1E, #EECC88);
+  background-image: -ms-linear-gradient(top, #7E4E1E, #EECC88);
+  background-image: -o-linear-gradient(top, #7E4E1E, #EECC88);
+  background-image: linear-gradient(to bottom, #7E4E1E, #EECC88);
+  text-decoration: none;
+}
+
+.miBtn2:hover {
   background: #2079b0;
   background-image: -webkit-linear-gradient(top, #7E4E1E, #EECC88);
   background-image: -moz-linear-gradient(top, #7E4E1E, #EECC88);

@@ -11,29 +11,29 @@
       <span class="palabra" *ngFor="let item of this.palabraSecreta">{{item}}</span>
     </div>
 <br><br>
-
-      <span class="opciones" *ngFor="let item of this.letras" (click)="letraElegida(item)">
+    <div class="letris">
+      <button class="opciones" *ngFor="let item of this.letras" (click)="letraElegida(item)">
         {{item}}
-      </span>
+      </button>
+    </div>
       <br><br><br><br>
       <span style="font-size: 20px; left: 20%;">Errores: {{this.errores}}</span>
   </div>
 
   <ng-template #noSeJuega>
-    <div>
+  <div class="contenedor" *ngIf="!this.gana && !this.pierde">
+  <div class="fondo">
 
-    </div>
-  <div *ngIf="!this.gana && !this.pierde">
-      <div style="align-items:center; display: flex;">
+    <br><br><br><br><br><br><br>
 
-      </div>
-      <div style="top: 20%; position: absolute;	display: flex; justify-content: center;">
+    <button type="button"  class="btn btn-outline-secondary btn-lg btn-block" (click)="empezarJuego()">JUGAR</button>
+    <br>
+    <button type="button" class="btn btn-outline-danger btn-lg btn-block" (click)="volver()">VOLVER</button>
 
-      <button type="button" style="bottom: 20%;" class="btn btn-outline-secondary btn-lg btn-block" (click)="empezarJuego()">JUGAR</button>
-      <br>
-      <img src="../../../../assets/juegos/ahorcado/ahorcado2.png" width="40%" height="40%" alt="">
-      <button type="button" style="bottom: 20%;" class="btn btn-outline-danger btn-lg btn-block">VOLVER</button>
-      </div>
+
+  </div>
+
+
   </div>
 <div class="center">
   <div class="text-align: center; " *ngIf="this.gana">

@@ -23,7 +23,7 @@ export class CarouselComponent implements OnInit {
 
   irAMayorMenor()
   {
-
+    this.router.navigateByUrl('pages/juegos/mayor-menor');
   }
 
   irAPreguntados()

@@ -14,7 +14,7 @@ export class RegistroComponent implements OnInit {
   @Output() eventoRegistro = new EventEmitter<Usuario>();
   public cargarUsuario!: FormGroup;
   public usuario!: Usuario;
-
+  public spinner: boolean=false;
   public expRegEmail: any = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
   public expRegPass: any= /^(?=.*[a-z])(?=.*\d)[A-Za-z\d#$@!%&*?]{6,12}$/;
 
@@ -32,27 +32,37 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar(miUsuario: Usuario) {
-    this.auth.registrar(miUsuario.correo,miUsuario.pass).then((userC)=> {
-      //this.inter.informeExito('Se registrÃ³ satisfactoriamente!!');
-      setTimeout(() => {
 
-      }, 2000);
-      this.toastr.success('El usuario se registró satistactoriamente', 'Exito',{
-        timeOut: 2000,
-        progressAnimation: 'increasing',
-        positionClass: 'toast-top-center'
+    setTimeout(() => {
+      this.auth.registrar(miUsuario.correo,miUsuario.pass).then((userC)=> {
+        //this.inter.informeExito('Se registrÃ³ satisfactoriamente!!');
+        this.spinner=false;
+        this.toastr.success('El usuario se registró satistactoriamente', 'Exito',{
+          timeOut: 2000,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-center'
+          });
+        this.eventoRegistro.emit(miUsuario);
+        this.router.navigateByUrl('home');
+        }).catch(error=>{
+          //this.inter.informeError('Usuario registrado');
+          alert("mal");
+
         });
-      this.eventoRegistro.emit(miUsuario);
-      this.router.navigateByUrl('home');
-      }).catch(error=>{
-        //this.inter.informeError('Usuario registrado');
-        alert("mal");
+        this.spinner=false;
+    }, 1000);
 
-      });
+
+
+  }
+
+  irALogin(){
+    this.router.navigateByUrl('pages/home');
   }
 
 
   enviarRegistro() {
+    this.spinner=true;
     this.usuario.correo=this.cargarUsuario.value.email;
     this.usuario.pass=this.cargarUsuario.value.pass;
     this.usuario.pass2= this.cargarUsuario.value.pass2;

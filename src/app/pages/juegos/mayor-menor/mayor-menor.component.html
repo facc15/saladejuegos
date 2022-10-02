@@ -1,0 +1,43 @@
+<div class="tablero">
+<img class="fondo" src="../../../../assets/juegos/mayormenor/fondo.jpg" alt="">
+  <div class="juego" *ngIf="this.sinJugar">
+    <p class="puntuacion"><strong>Solo tienes 10 intentos</strong></p>
+    <br><br><br><br><br><br><br>
+    <button class="btn btn-block btn-lg btn-outline-success" (click)="empezarJuego()">Jugar</button>
+    <br><br><br>
+    <button class="btn btn-block btn-lg btn-outline-danger" routerLink="./../../juegos/lista">Volver</button>
+
+  </div>
+
+  <div class="juego" *ngIf="this.terminado">
+    <p class="puntuacion"><strong>TU RECORD FUE DE {{this.puntaje}} PUNTOS!</strong></p>
+    <br><br><br><br><br><br><br>
+    <button class="btn btn-block btn-lg btn-outline-success" (click)="empezarJuego()">Volver a jugar</button>
+    <br><br><br>
+    <button class="btn btn-block btn-lg btn-outline-danger" routerLink="./../../juegos/lista">Volver</button>
+
+  </div>
+
+  <div class="juego" *ngIf="this.comienza">
+    <h3 style="text-decoration: underline; text-align: center;" *ngIf="!this.desactivado">La proxima carta será mayor o menor???</h3>
+    <h3 style="text-decoration: underline; text-align: center;" *ngIf="this.desactivado">Selecciona la carta:</h3>
+    <br><br>
+    <img *ngIf="this.mostrarCarta"  class="carta" [hidden]="!this.desactivado" style="cursor:pointer" src="../../../../assets/juegos/mayormenor/dorso.png" (click)="sacarCarta()">
+    <button class="btn btn-block btn-lg btn-dark" [hidden]="this.desactivado" (click)="elegirMayorMenor(true)">Mayor</button>
+    <br><br>
+    <button class="btn btn-block btn-lg btn-dark" [hidden]="this.desactivado" (click)="elegirMayorMenor(false)">Menor</button>
+    <div class="contenedor text-center text-dark" >
+     <br>
+     <img *ngIf="this.mostrarCarta" class="carta2" [src]="this.carta.path">
+
+    </div>
+    <div class="informes">
+      <p style="text-align:center;" [ngClass]="{'text-success': this.gana,
+      'text-danger': !this.gana}"><strong>{{this.informe}}</strong></p>
+      <p style="text-align:left;"><strong>Puntaje: {{this.puntaje}}</strong></p>
+      <p style="text-align:left;"><strong>Intentos: {{this.intentos}}</strong></p>
+       </div>
+    <br>
+  </div>
+</div>
+

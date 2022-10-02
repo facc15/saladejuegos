@@ -1,17 +1,18 @@
 <div class="central">
   <div class="body">
   <div *ngIf="this.user$ | async as user; else noLog">
-    <img class="imagen" src="./../../../assets/boys/boys5.png" width="100%" >
 
 
+    <br>
 
-  <button type="button" class="miBtn2" (click)="irASalaDeJuegos()">Sala de juegos</button>
-  <br><br>
-  <button type="button" class="miBtn2" (click)="irAChat()">Sala de Chat</button>
-  <br><br>
-  <button type="button" class="miBtn2" (click)="irAQuienSoy()">Quien soy?</button>
-  <br><br>
-  <button type="button" class="miBtn2" (click)="desloguear()">Cerrar sesión</button>
+    <button type="button" class="miBtn2" (click)="irASalaDeJuegos()">Sala de juegos</button>
+    <br><br>
+    <button type="button" class="miBtn2" (click)="irAChat()">Sala de Chat</button>
+    <br><br>
+    <button type="button" class="miBtn2" (click)="irAQuienSoy()">Quien soy?</button>
+    <br><br>
+    <button type="button" class="miBtn2" (click)="desloguear()">Cerrar sesión</button>
+    <br><br>
 
 <div *ngIf="this.chatActivo">
   <app-chat></app-chat>
@@ -21,7 +22,7 @@
 
 
   <ng-template #noLog>
-  <img class="logo" src="../../../assets/login.png" alt="login">
+  <img class="logo" src="../../../assets/login2.png" alt="login">
     <div *ngIf="loguear">
     <app-login (newItemEvent)="estaLogueado($event)"></app-login>
       <p class="mt-3">No tienes cuenta? <a class="link" (click)="irARegistro()">Registrarse</a></p>

@@ -1,4 +1,6 @@
-<form [formGroup]="this.cargarUsuario">
+<app-spinner *ngIf="this.spinner"></app-spinner>
+<form [formGroup]="this.cargarUsuario" *ngIf="!this.spinner">
+
   <div class="form-floating mb-3">
     <label>Correo electrónico:</label>
     <input  name="correo"  type="email" class="form-control" formControlName="email"   aria-describedby="emailHelp" placeholder="Ingrese correo">

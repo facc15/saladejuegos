@@ -18,12 +18,14 @@ export class LoginComponent implements OnInit {
   public cargarUsuario!: FormGroup;
   public loguearse!: boolean;
   public usuario!: Usuario;
+  public spinner: boolean=false;
 
   public expRegEmail: any = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
   public expRegPass: any= /^(?=.*[a-z])(?=.*\d)[A-Za-z\d#$@!%&*?]{6,12}$/;
 
 
   loguear(miUsuario: Usuario) {
+    this.spinner=true;
       this.auth.loguear(miUsuario.correo,miUsuario.pass).then((userC)=> {
 
       this.loguearse=false;
@@ -33,7 +35,9 @@ export class LoginComponent implements OnInit {
         //this.inter.informeError('Usuario registrado');
         alert("mal");
 
+
       });
+      this.spinner=false;
   }
 
   constructor(private router: Router, private auth: AuthService,private fb :FormBuilder ,private toastr: ToastrService) {

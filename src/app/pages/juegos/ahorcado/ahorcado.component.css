@@ -11,7 +11,7 @@
   display: block;
 }
 
-buttom{
+button{
   justify-content: center;
 }
 
@@ -24,14 +24,30 @@ buttom{
 .contenedor {
   position: relative;
 }
+
+.contenido{
+position:absolute;
+}
+
+.fondo{
+  position: absolute;
+  max-width: 200%;
+  max-height: 200%;
+  width: 100%;
+  height: 200px;
+  top:0;
+  opacity: 0.8;
+}
+
+
 .palabra {
   top: 20%;
   margin-top: 20%;
   height: 30%;
   width: 50%;
-  size: 20px;
+  size: 18px;
 
-  font-size: 5em;
+  font-size: 4em;
   font-weight: 100;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -60,12 +76,11 @@ buttom{
 }
 
 .opciones{
-  bottom: 50%;
+
   border-radius: 20%;
   border: 3px solid #7E4E1E;
-  height: 30%;
-  width: 5%;
-  bottom: 70%;
+  height: 20%;
+  width: 4%;
   text-align: center;
   background-color: white;
   color: black;
@@ -73,7 +88,26 @@ buttom{
   float: left;
   cursor: pointer;
   position: relative;
+  max-width: 50%;
 
+}
+
+.opciones:hover{
+  background-color: #7E4E1E;
+  color:whitesmoke;
+}
+
+.letris{
+
+  height: 40%;
+  position: absolute;
+  left: 250px;
+  display: inline;
+  width: 70%;
+}
+.opciones:active{
+  transform: scale(0.98);
+  box-shadow: 3px 2px 1px rgb(#EECC88, #7E4E1E, black);
 }
 
 .abc {

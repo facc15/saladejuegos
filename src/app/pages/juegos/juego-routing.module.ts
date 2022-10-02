@@ -8,6 +8,7 @@ children:[
   {path:'lista', component: JuegosComponent}
 ]},
 {path: 'ahorcado', loadChildren: ()=> import('./ahorcado/ahorcado.module').then(m=>m.AhorcadoModule)},
+{path: 'mayor-menor', loadChildren: ()=> import('./mayor-menor/mayor-menor.module').then(m=>m.MayorMenorModule)},
 ];
 
 @NgModule({

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Carta {\n  constructor(valor, path) {\n    this.valor = valor;\n    this.path = path;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
