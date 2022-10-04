@@ -1,0 +1,106 @@
+.contenedor{
+  width: 100vw;
+  height: 85vh;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(../../../../assets/juegos/preguntados/cancha2.jpg);
+}
+
+.encabezado{
+  background-color: whitesmoke;
+  min-width: 300px;
+  width: 70%;
+}
+
+.divImagen{
+align-items: center;
+justify-content: center;
+border-color: black;
+}
+.informe{
+
+  position: absolute;
+  color: #7E4E1E;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 30px;
+  bottom: 20px;
+}
+
+.pregunta{
+  padding: 10px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.imagen{
+ height: 400px;
+ width: 100%;
+}
+
+.noJuega{
+  position: relative;
+}
+
+.fulbo{
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  top: 60px;
+}
+
+.btn{
+  background-color: rgb(161, 220, 235);
+  width: 60%;
+  padding: 10px;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.boton{
+  height: 200px;
+  border-radius: 20%;
+  border-width: 1px;
+}
+.boton2{
+  height: 200px;
+  border-radius: 20%;
+}
+
+.boton:hover{
+  background-color: rgb(58, 57, 57);
+}
+
+.boton2:hover{
+  background-color: rgb(110, 109, 109);
+}
+
+.boton:active{
+  transform: scale(0.92);
+  box-shadow: 3px 2px 1px rgb(#EECC88, #7E4E1E, black);
+}
+
+.boton2:active{
+  transform: scale(0.92);
+  box-shadow: 3px 2px 1px rgb(#EECC88, #7E4E1E, black);
+}
+
+.btn:hover{
+  cursor: pointer;
+  background-color: rgb(22, 14, 3);
+  border-color: whitesmoke;
+  color: whitesmoke;
+  border-style:groove;
+}
+
+.btn:active{
+  transform: scale(0.94);
+  box-shadow: 3px 2px 1px rgb(#EECC88, #7E4E1E, black);
+}
+

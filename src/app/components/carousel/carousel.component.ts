@@ -28,12 +28,12 @@ export class CarouselComponent implements OnInit {
 
   irAPreguntados()
   {
-
+    this.router.navigateByUrl('pages/juegos/preguntados');
   }
 
-  irACazaAliens()
+  irAPokemon()
   {
-
+    this.router.navigateByUrl('pages/juegos/pokemon');
   }
 
 

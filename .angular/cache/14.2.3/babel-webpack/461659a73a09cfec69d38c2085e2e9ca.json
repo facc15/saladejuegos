@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Preguntados {\n  constructor(preg, o1, o2, o3, o4, corr, path) {\n    this.pregunta = preg;\n    this.opcion1 = o1;\n    this.opcion2 = o2;\n    this.opcion3 = o3;\n    this.opcion4 = o4;\n    this.correcta = corr;\n    this.path = path;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

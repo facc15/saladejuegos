@@ -1,4 +1,5 @@
-import { AhorcadoModule } from './ahorcado/ahorcado.module';
+
+
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

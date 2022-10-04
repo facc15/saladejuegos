@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -34,8 +36,7 @@ import { ComponentsModule } from './components/components.module';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

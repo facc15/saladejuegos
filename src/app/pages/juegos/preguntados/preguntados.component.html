@@ -1,0 +1,54 @@
+
+<div class="contenedor" *ngIf="this.comienza">
+  <div class="encabezado">
+
+        <div class="pregunta">
+          <strong>{{this.pregunta.pregunta}}</strong>
+        </div>
+       <div class="divImagen"><img class="imagen" [src]="this.pregunta.path"  alt=""></div>
+    </div>
+
+    <div class="btn" [ngStyle]="{'background-color':this.opcion1}" (click)="elegir(1)">
+     {{this.pregunta.opcion1}}
+    </div>
+
+    <div class="btn" [ngStyle]="{'background-color':this.opcion2}"  (click)="elegir(2)">
+      {{this.pregunta.opcion2}}
+    </div>
+
+    <div class="btn" [ngStyle]="{'background-color':this.opcion3}" (click)="elegir(3)">
+      {{this.pregunta.opcion3}}
+    </div>
+
+    <div class="btn" [ngStyle]="{'background-color':this.opcion4}" (click)="elegir(4)">
+      {{this.pregunta.opcion4}}
+    </div>
+
+</div>
+
+<div class="contenedor" *ngIf="!this.comienza && !this.terminado">
+
+ <img class="fulbo" src="../../../../assets/juegos/preguntados/fulbo.png" alt="">
+<br><br>
+<div *ngIf="!this.comienza && !this.spinner">
+  <button class="boton2 btn-block btn-dark btn-lg" (click)="comenzarJuego()"><h3> Comenzar</h3></button>
+<br>
+<button class="boton btn-block btn-white btn-lg" routerLink="../../../pages/juegos/lista"><h3>Volver</h3></button>
+
+</div>
+<app-spinner *ngIf="this.spinner"></app-spinner>
+</div>
+
+<span class="text-left" *ngIf="this.comienza">preguntas restantes: {{5-this.cantidad}}</span>
+<span class="text-center" *ngIf="this.comienza"><h3>Puntos: {{this.puntaje}}</h3></span>
+
+<div class="contenedor" *ngIf="this.terminado">
+ <img class="fulbo" src="../../../../assets/juegos/preguntados/fulbo.png" alt="">
+<br><br>
+<div *ngIf="!this.comienza && !this.spinner">
+  <button class="boton2 btn-block btn-dark btn-lg" (click)="comenzarJuego()"><h3>Jugar de nuevo</h3></button>
+<br>
+<button class="boton btn-block btn-white btn-lg" routerLink="../../../pages/juegos/lista"><h3>Volver</h3></button>
+</div>
+<div class="informe">Total de puntos: {{this.puntaje}}</div>
+</div>

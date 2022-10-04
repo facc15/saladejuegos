@@ -9,6 +9,8 @@ children:[
 ]},
 {path: 'ahorcado', loadChildren: ()=> import('./ahorcado/ahorcado.module').then(m=>m.AhorcadoModule)},
 {path: 'mayor-menor', loadChildren: ()=> import('./mayor-menor/mayor-menor.module').then(m=>m.MayorMenorModule)},
+{path: 'preguntados', loadChildren: ()=> import('./preguntados/preguntados.module').then(m=>m.PreguntadosModule)},
+{path: 'pokemon', loadChildren: ()=> import('./pokemon/pokemon.module').then(m=>m.PokemonModule)},
 ];
 
 @NgModule({
