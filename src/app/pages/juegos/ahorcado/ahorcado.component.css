@@ -1,5 +1,5 @@
 .miDiv{
-  background-image: linear-gradient(120deg, #EECC88 0%, #7E4E1E 100%);
+  background-image: url(../../../../assets/juegos/ahorcado/solution.jpg);
   font: 400 16px/1.5em sans-serif;
   height: 20px;
   width: auto;
@@ -48,7 +48,7 @@ position:absolute;
   height: 30%;
   width: 50%;
   size: 18px;
-
+  color:aliceblue;
   font-size: 4em;
   font-weight: 100;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

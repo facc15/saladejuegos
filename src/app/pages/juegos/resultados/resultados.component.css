@@ -2,7 +2,23 @@
   position: fixed;
   width: 40%;
   top:58px;
+  height: 40%;
   align-items: center;
+}
+
+.contenedorSpinner{
+  position: absolute;
+  width: 40%;
+  top:58px;
+  height: 40%;
+  align-items: center;
+  background-color: rgb(65, 62, 62);
+}
+
+.spinner{
+  top:40%;
+  left:40%;
+  position:absolute;
 }
 
 .btn{
