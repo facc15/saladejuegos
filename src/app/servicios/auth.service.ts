@@ -36,14 +36,7 @@ export class AuthService {
       this.miUser.name=u?.displayName;
       this.miUser.id=u?.uid;
       this.miUser.email= u?.email;
-
-
     })
-  }
-
-  estadoLog()
-  {
-
   }
 
   async guardarColeccion(correo: string, pass: string)
@@ -93,13 +86,6 @@ export class AuthService {
 
 }
 
-async getIdToken()
-{
-return await this.afAuth.idTokenResult;
-}
-
-
-
 
   async registrar(email:string, password:string){
 
@@ -108,6 +94,11 @@ return await this.afAuth.idTokenResult;
       const resultado= await this.afAuth.createUserWithEmailAndPassword(email,password).then(async (user)=>{
         console.log("user: "+user);
         const coleccion=await this.guardarColeccion(email,password);
+        this.toastr.success('El usuario se registró satistactoriamente', 'Exito',{
+          timeOut: 1000,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-center'
+          });
       }).catch((error)=>{console.log(error)
       this.toastr.error(this.firebaseError(error.code),'Error',{
         timeOut: 2000,
@@ -157,20 +148,6 @@ return await this.afAuth.idTokenResult;
           }
 
   }
-
-  /*
-  async loginWithGoogle()
-  {
-    try {
-      let provider=new firebase.default.auth.GoogleAuthProvider()
-
-      const result= this.afAuth.signInWithPopup(provider);
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
-    return;
-  }*/
 
   getUserLog(){
     return this.afAuth.authState.pipe(first()).toPromise();

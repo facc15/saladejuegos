@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatModule } from './../components/chat/chat.module';
 import { ComponentsModule } from './../components/components.module';
 import { LoginModule } from './login/login.module';
@@ -8,12 +9,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
+import { EncuestaComponent } from './encuesta/encuesta.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     QuiensoyComponent,
+    EncuestaComponent,
 
   ],
   imports: [
@@ -21,7 +24,9 @@ import { PagesRoutingModule } from './pages-routing.module';
     PagesRoutingModule,
     LoginModule,
     ComponentsModule,
-    ChatModule
+    ChatModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [HomeComponent,QuiensoyComponent]
 })

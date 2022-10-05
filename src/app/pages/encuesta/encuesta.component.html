@@ -1,0 +1,97 @@
+<div class="contenedor">
+
+  <div class="formulario" *ngIf="!this.encuesta">
+  <h1>Encuesta</h1>
+  <p>Gracias por ingresar, por favor llenar el formulario y realizar la encuesta</p>
+
+  <form [formGroup]="form" (ngSubmit)="this.enviar()">
+
+  <div class="form-group">
+ <label> Nombre: </label>
+  <input class="form-control" type="text" placeholder="Ingresa tu nombre" formControlName="nombre">
+   <div *ngIf="(form.controls['nombre'].dirty || form.controls['nombre'].touched) && form.controls['nombre'].errors">
+    <span class="text-danger">El nombre es requerido.</span>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <label> Apellido: </label>
+    <input class="form-control" type="text" placeholder="Ingresa tu apellido" formControlName="apellido">
+  <div *ngIf="(form.controls['apellido'].dirty || form.controls['apellido'].touched) && form.controls['apellido'].errors">
+    <span class="text-danger">El apellido es requerido.</span>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <label> Edad: </label>
+    <input class="form-control" type="number" placeholder="Ingresa tu edad" formControlName="edad">
+
+    <div class="text-danger"  *ngIf="this.form.get('edad')?.hasError('required') && this.form.get('edad')?.touched">
+   El campo es requerido.
+     </div>
+     <div class="text-danger" *ngIf="this.form.get('edad')?.hasError('min') && this.form.get('edad')?.touched" >
+   No puedes ser menor de 18 años.
+     </div>
+     <div class="text-danger" *ngIf="this.form.get('edad')?.hasError('max') && this.form.get('edad')?.touched">
+      No puedes ser mayor a 99 años.
+        </div>
+
+    </div>
+  <div class="form-group">
+    <label> Numero: </label>
+    <input class="form-control" type="text" placeholder="Ingresa tu número" formControlName="numero">
+        <div class="text-danger"  *ngIf="this.form.get('numero')?.hasError('required') && this.form.get('numero')?.touched">
+        El campo es requerido.
+        </div>
+        <div class="text-danger" *ngIf="this.form.get('numero')?.hasError('maxlength') && this.form.get('numero')?.touched">
+         El número no puede tener mas de 10 números.
+        </div>
+        <div class="text-danger" *ngIf="this.form.get('numero')?.hasError('pattern') && this.form.get('numero')?.touched">
+          Sólo se pueden ingresar números
+         </div>
+
+  </div>
+<button class="btn btn-block btn-dark btn-lg" type="submit" [disabled]="!this.form.valid" >Comenzar</button>
+  </form>
+
+  </div>
+
+
+
+
+
+<div  class="encuesta" *ngIf="this.encuesta">
+
+
+
+  <div>
+
+   <p> Que juego te gustó más?</p>
+
+    <select class="form-control" aria-label="Default select example" name="tipo"  (change)="capturarSeleccion($event)">
+
+    <option *ngFor="let item of this.juegos">
+      {{item}}
+    </option>
+    </select>
+
+  </div>
+  <br>
+  <label class="text-center"> Cuál juego incorporarías?</label>
+  <div class="custom-control custom-radio" *ngFor="let item of this.juegosAAgregar">
+    <input type="radio" id="{{item}}" value="{{item}}" class="custom-control-input" (change)="capturarRadio($event)">
+    <label class="custom-control-label" for="{{item}}">{{item}}</label>
+  </div>
+
+<br>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Nos dejarías alguna recomendación para mejorar el sitio?</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="pregunta3" rows="4" [(ngModel)]="this.encuestado.pregunta3"></textarea>
+  </div>
+  <br>
+  <button class="btn btn-block btn-dark btn-lg" type="submit"  (click)="confirmar()">Confirmar</button>
+</div>
+
+</div>

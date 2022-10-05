@@ -20,7 +20,7 @@ img{
 
 .contenedor {
   height: 100%;
-  width: 100%;
+  width: 90vw;
   position: relative;
   left: 10%;
 }
@@ -29,6 +29,6 @@ img{
   color: #7E4E1E;
   font-size: 30px;
   font-weight: bold;
-  width: 55%;
+  width: 65%;
 
 }

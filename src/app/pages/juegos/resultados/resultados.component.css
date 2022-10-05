@@ -1,0 +1,15 @@
+.contenedor{
+  position: fixed;
+  width: 40%;
+  top:58px;
+  align-items: center;
+}
+
+.btn{
+  text-align: center;
+  background-color: rgb(65, 62, 62);
+  width: 100%;
+  position: absolute;
+  left:0px;
+
+}

@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { Jugador } from './../../../interfaces/jugador';
+import { ResultadosService } from './../../../servicios/resultados.service';
 import { Carta } from '../../../clases/carta';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MayorMenorComponent implements OnInit {
 
+  public juego: string = 'MayorMenor'
   public comienza: boolean=false;
   public sinJugar: boolean=true;
   public mostrarCarta: boolean=false;
@@ -23,7 +27,10 @@ export class MayorMenorComponent implements OnInit {
   public gana: boolean=false;
   public terminado: boolean=false;
 
-  constructor() { }
+  public puntajes!: boolean;
+  public jugadores: Jugador[]=[];
+
+  constructor(private resultados:ResultadosService) { }
 
   ngOnInit(): void {
    this.cargarCartas();
@@ -98,6 +105,8 @@ export class MayorMenorComponent implements OnInit {
       {
         this.terminado=true;
         this.comienza=false;
+        this.resultados.guardarResultado(this.juego,this.puntaje);
+
       }
 
 
@@ -159,4 +168,21 @@ export class MayorMenorComponent implements OnInit {
     this.cartas.push(new Carta(12,'../../../../assets/juegos/mayormenor/12o.png'));
 
   }
+
+
+  traerPuntajes()
+  {
+    this.puntajes=true;
+    this.resultados.traerResultados(this.juego).subscribe(res=>{
+      this.jugadores=res;
+
+    });
+  }
+
+  cerrandoResultados(cerrando: boolean)
+  {
+    this.puntajes=cerrando;
+  }
+
 }
+

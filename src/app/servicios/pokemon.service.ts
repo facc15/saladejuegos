@@ -12,4 +12,9 @@ export class PokemonService {
     return this.http.get(this.api+pokemon);
   }
 
+  traerPokemones()  {
+    this.http.get(this.api).subscribe(res=>console.log(res));
+  }
+
+
 }

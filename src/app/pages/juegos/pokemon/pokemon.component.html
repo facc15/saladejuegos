@@ -1,1 +1,95 @@
-<p>pokemon works!</p>
+<div class="contenedor">
+<div class="cabecera"></div>
+<section id="tarjetas" *ngIf="!this.comienza">
+<div class="pokemon" id="charmander"  (click)="elegirpokemon(this.charmander)">
+  <img [src]="this.charmander.path" alt="">
+  <h2>Charmander</h2>
+  <p class="tipo">
+  Fuego
+  </p>
+      <p>Charmander es un pequeño lagarto bípedo.
+      Sus características de fuego son resaltadas por su color de piel anaranjado y su cola con la punta envuelta en llamas.</p>
+</div>
+
+<div class="pokemon" id="squirtle" (click)="elegirpokemon(this.squirtle)">
+  <img [src]="this.squirtle.path" alt="">
+  <h2>Squirtle</h2>
+  <p class="tipo">
+  Agua
+  </p>
+  <p>Habita tanto aguas dulces como marinas, preferiblemente zonas bastante profundas.
+   Son pequeñas tortugas color celeste con caparazones color café; o rojas en algunos casos, con una cola enrollada que los distingue.
+  </p>
+</div>
+
+<div class="pokemon" id="bulbasaur" (click)="elegirpokemon(this.bulbasaur)">
+  <img [src]="this.bulbasaur.path"  alt="">
+  <h2>Bulbasaur</h2>
+  <p class="tipo">
+    Planta-Veneno
+  </p>
+  <p>Bulbasaur es un Pokémon cuadrúpedo de color verde y manchas más oscuras de formas geométricas.
+    Este Pokémon tiene plantado un bulbo en el lomo desde que nace. Esta semilla crece y se desarrolla a lo largo del ciclo de vida de Bulbasaur a medida que suceden sus evoluciones.
+  </p>
+</div>
+
+</section>
+<h2 style="text-align:center; color:whitesmoke;" *ngIf="this.comienza">{{this.rival.nombre}} - &hearts; {{this.rival.vida}}
+</h2>
+<h3 class="informeRival"  *ngIf="this.comienza">{{this.informeRival}}</h3>
+
+<section id="batalla" *ngIf="this.comienza && !this.terminado">
+  <div class="personaje" id={{this.pokemonElegido.nombre}}  (click)="elegirpokemon(this.charmander)">
+    <img [src]="this.pokemonElegido.path" alt="">
+    <br><br><br>
+
+
+  </div>
+
+  <div class="personaje" >
+    <img [src]="this.rival.path"alt="">
+
+
+
+  </div>
+
+</section>
+
+<section  *ngIf="this.terminado">
+  <div class="text-center" >
+<h2>  <strong class="text-success">VICTORIAS: {{this.victorias}}</strong> - <strong class="text-danger"> DERROTAS: {{this.derrotas}}</strong></h2>
+
+<button class="btn btn-block btn-lg btn-outline-success" routerLink="./../../encuesta">Desea realizar una breve encuesta?</button>
+
+  </div>
+
+
+</section>
+
+
+</div>
+<h3 class="informe" style="text-align:right" id={{this.pokemonElegido.nombre}} *ngIf="this.comienza">{{this.informe}}</h3>
+<div class="movimientos" *ngIf="this.comienza">
+  <div class="vida" >
+    <h2>{{this.pokemonElegido.nombre}} - &hearts; {{this.pokemonElegido.vida}}</h2>
+  </div>
+  <div class="movimiento" (click)="atacar(1)" id={{this.pokemonElegido.nombre}}>
+   {{this.pokemonElegido.movimiento1.nombre}}
+   </div>
+   <div class="movimiento" (click)="atacar(2)" id={{this.pokemonElegido.nombre}}>
+    {{this.pokemonElegido.movimiento2.nombre}}
+   </div>
+    <div class="movimiento" (click)="atacar(3)" id={{this.pokemonElegido.nombre}}>
+      {{this.pokemonElegido.movimiento3.nombre}}
+   </div>
+   <div class="movimiento" (click)="atacar(4)" id={{this.pokemonElegido.nombre}}>
+    {{this.pokemonElegido.movimiento4.nombre}}
+   </div>
+
+</div>
+
+<div class="salir" *ngIf="!this.comienza">
+  <button class="miBtn2" style="margin-top:5px; margin-right: 10px;" (click)="traerPuntajes()">LISTA DE PUNTAJES</button>
+<button class="miBtn2" style="margin-top:5px;" routerLink="./../../juegos/lista">VOLVER</button>
+</div>
+<app-resultados *ngIf="this.puntajes" (cerrado)="cerrandoResultados($event)" [esPokemon]="true" [listaResultados]="this.jugadores"></app-resultados>

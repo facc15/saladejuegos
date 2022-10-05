@@ -1,5 +1,7 @@
+import { Jugador } from './../../../interfaces/jugador';
+import { ResultadosService } from './../../../servicios/resultados.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-ahorcado',
@@ -8,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AhorcadoComponent implements OnInit {
 
+  public juego: string='Ahorcado';
   public seJuega: boolean;
   public palabraSecreta!: string[];
   public palabra!: string;
@@ -20,10 +23,13 @@ export class AhorcadoComponent implements OnInit {
   public errores: number;
   public imagenes!: string [];
   public imagen!: string;
+  public victorias: number=0;
+  public jugadores: Jugador[]=[];
+  public puntajes: boolean=false;
 
+  public yaJugo: boolean=false;
 
-
-  constructor(private router: Router) {
+  constructor(private router: Router, private resultados: ResultadosService) {
     this.seJuega=false;
 
     this.palabras= this.cargarPalabras();
@@ -103,6 +109,13 @@ export class AhorcadoComponent implements OnInit {
         this.pierde=true;
         this.gana=false;
         this.seJuega=false;
+        if(this.yaJugo)
+        this.resultados.actualizarResultado(this.juego,this.victorias);
+        else
+        this.resultados.guardarResultado(this.juego,this.victorias);
+
+
+        this.yaJugo=true;
         this.reset();
       }, 800);
 
@@ -112,10 +125,20 @@ export class AhorcadoComponent implements OnInit {
     {
       setTimeout(() => {
       this.gana=true;
+      this.victorias++;
       this.pierde=false;
       this.seJuega=false;
+
+
+      if(this.yaJugo)
+      this.resultados.actualizarResultado(this.juego,this.victorias);
+      else
+      this.resultados.guardarResultado(this.juego,this.victorias);
+
+
+      this.yaJugo=true;
       this.reset();
-      }, 800);
+    }, 800);
 
     }
 
@@ -138,6 +161,25 @@ export class AhorcadoComponent implements OnInit {
   volver()
   {
    this.router.navigateByUrl('pages/juegos/lista');
+  }
+
+  traerPuntajes()
+  {
+    this.puntajes=true;
+    this.resultados.traerResultados(this.juego).subscribe(res=>{
+      this.jugadores=res;
+
+    });
+  }
+
+  cerrando(cierro: boolean)
+  {
+    this.puntajes=false;
+  }
+
+  irAEncuesta()
+  {
+    this.router.navigateByUrl('pages/encuesta');
   }
 
 }

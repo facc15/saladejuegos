@@ -1,0 +1,30 @@
+.contenedor{
+  width: 100vw;
+  height: 700px;
+  background-color: grey;
+  align-items: center;
+  position: relative;
+  color:aliceblue;
+  position: relative;
+}
+
+.formulario{
+position: absolute;
+top:40%;
+left:50%;
+transform: translate(-50%,-50%);
+
+}
+
+.btn:active{
+  transform: scale(0.92);
+}
+
+.encuesta{
+  position: absolute;
+  top:40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+
+}
+

@@ -11,12 +11,10 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  @Output() eventoRegistro = new EventEmitter<Usuario>();
+  @Output() eventoIrALogin = new EventEmitter<boolean>();
   public cargarUsuario!: FormGroup;
   public usuario!: Usuario;
   public spinner: boolean=false;
-  public expRegEmail: any = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-  public expRegPass: any= /^(?=.*[a-z])(?=.*\d)[A-Za-z\d#$@!%&*?]{6,12}$/;
 
   constructor(private router: Router, private auth: AuthService, private toastr: ToastrService, private fb: FormBuilder) {
     this.usuario=new Usuario();
@@ -37,19 +35,13 @@ export class RegistroComponent implements OnInit {
       this.auth.registrar(miUsuario.correo,miUsuario.pass).then((userC)=> {
         //this.inter.informeExito('Se registrÃ³ satisfactoriamente!!');
         this.spinner=false;
-        this.toastr.success('El usuario se registró satistactoriamente', 'Exito',{
-          timeOut: 2000,
-          progressAnimation: 'increasing',
-          positionClass: 'toast-top-center'
-          });
-        this.eventoRegistro.emit(miUsuario);
+        console.log(userC);
+
         this.router.navigateByUrl('home');
         }).catch(error=>{
           //this.inter.informeError('Usuario registrado');
-          alert("mal");
-
+          this.spinner=false;
         });
-        this.spinner=false;
     }, 1000);
 
 
@@ -57,7 +49,7 @@ export class RegistroComponent implements OnInit {
   }
 
   irALogin(){
-    this.router.navigateByUrl('pages/home');
+    this.eventoIrALogin.emit(true);
   }
 
 
@@ -74,13 +66,14 @@ export class RegistroComponent implements OnInit {
         progressAnimation: 'decreasing',
         positionClass: 'toast-bottom-center'
       });
+      this.spinner=false;
       return;
     }
 
     setTimeout(() => {
 
       this.registrar(this.usuario);
-    }, 2000);
+    }, 600);
 
   }
 }

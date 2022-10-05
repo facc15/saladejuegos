@@ -1,3 +1,4 @@
+import { JuegoModule } from './../juego.module';
 import { FormsModule } from '@angular/forms';
 import { AhorcadoComponent } from './ahorcado.component';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,8 @@ import { AhorcadoRoutingModule } from './ahorcado-routing.module';
   imports: [
     CommonModule,
     AhorcadoRoutingModule,
-    FormsModule
+    FormsModule,
+    JuegoModule
   ]
 })
 export class AhorcadoModule { }

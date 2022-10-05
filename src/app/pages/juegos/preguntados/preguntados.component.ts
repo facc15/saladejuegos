@@ -1,3 +1,5 @@
+import { Jugador } from './../../../interfaces/jugador';
+import { ResultadosService } from './../../../servicios/resultados.service';
 import { Ligas } from './../../../interfaces/ligas';
 import { PreguntadosService } from '../../../servicios/preguntados.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +12,7 @@ import { Preguntados } from 'src/app/clases/preguntados';
 })
 export class PreguntadosComponent implements OnInit {
 
-
+  public juego: string='Preguntados';
   public comienza: boolean=false;
   public terminado: boolean= false;
   public spinner: boolean=false;
@@ -29,9 +31,12 @@ export class PreguntadosComponent implements OnInit {
   public cantidad!: number;
   public preguntasAnteriores!: number[];
 
+  public puntajes: boolean=false;
+  public jugadores: Jugador[]=[];
+
   public pregunta!: Preguntados;
 private preguntas: Preguntados[]=[];
-  constructor(private pregService: PreguntadosService)
+  constructor(private pregService: PreguntadosService,private resultados: ResultadosService)
   {
 
   }
@@ -156,10 +161,12 @@ this.cantidad++;
       }
       break;
   }
-  if(this.cantidad==5)
+  if(this.cantidad==8)
   {
     this.terminado=true;
     this.comienza=false;
+    this.resultados.guardarResultado(this.juego,this.puntaje);
+
   }
 
  this.randomPreguntas();
@@ -196,6 +203,20 @@ this.cantidad++;
 
   }
 
+
+  traerPuntajes()
+  {
+    this.puntajes=true;
+    this.resultados.traerResultados(this.juego).subscribe(res=>{
+      this.jugadores=res;
+
+    });
+  }
+
+  cerrandoResultados(cerrando: boolean)
+  {
+    this.puntajes=cerrando;
+  }
 
 
 

@@ -1,3 +1,4 @@
+import { JuegoModule } from './../juego.module';
 import { ComponentsModule } from './../../../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,8 @@ import { PreguntadosComponent } from './preguntados.component';
     CommonModule,
     PreguntadosRoutingModule,
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    JuegoModule
   ]
 })
 export class PreguntadosModule { }

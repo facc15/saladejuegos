@@ -71,16 +71,17 @@ irASalaDeJuegos()
   this.router.navigateByUrl('pages/juegos/lista');
 }
 
-  irALogin()
-  {
-    this.loguear=true;
-    this.registrar=false;
-  }
 
-  irARegistro()
+  irARegistro(event: boolean)
   {
+    this.registrar=event;
     this.loguear=false;
-    this.registrar=true;
+
+  }
+  irALogin(event: boolean)
+  {
+    this.loguear=event;
+    this.registrar=false;
   }
 
   irAError()

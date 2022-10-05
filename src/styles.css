@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+
 .general{
   background-color: #EECC88;
   color: #7E4E1E;
@@ -6,6 +8,12 @@
   align-items:center;
   justify-content: center;
 
+}
+
+.salir{
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .colorcito{

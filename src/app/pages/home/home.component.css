@@ -24,7 +24,7 @@ a{
   text-align: center;
 }
 .central{
-  height: 100%;
+  height: 80%;
   display: flex;
   justify-content: center;
 }

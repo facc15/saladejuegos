@@ -12,9 +12,11 @@
   <div class="juego" *ngIf="this.terminado">
     <p class="puntuacion"><strong>TU RECORD FUE DE {{this.puntaje}} PUNTOS!</strong></p>
     <br><br><br><br><br><br><br>
-    <button class="btn btn-block btn-lg btn-outline-success" (click)="empezarJuego()">Volver a jugar</button>
+    <button class="btn btn-block btn-lg btn-outline-primary" (click)="empezarJuego()">Volver a jugar</button>
     <br><br><br>
     <button class="btn btn-block btn-lg btn-outline-danger" routerLink="./../../juegos/lista">Volver</button>
+    <br><br><br>
+    <button class="btn btn-block btn-lg btn-outline-success" routerLink="./../../encuesta">Desea realizar una breve encuesta?</button>
 
   </div>
 
@@ -41,3 +43,8 @@
   </div>
 </div>
 
+<div class="salir">
+  <button class="miBtn2" style="margin-top:20px;" (click)="traerPuntajes()">RESULTADOS</button>
+
+  </div>
+  <app-resultados *ngIf="this.puntajes" [listaResultados]="this.jugadores" (cerrado)="this.cerrandoResultados($event)"></app-resultados>

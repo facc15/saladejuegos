@@ -39,7 +39,7 @@
 <app-spinner *ngIf="this.spinner"></app-spinner>
 </div>
 
-<span class="text-left" *ngIf="this.comienza">preguntas restantes: {{5-this.cantidad}}</span>
+<span class="text-left" *ngIf="this.comienza">preguntas restantes: {{8-this.cantidad}}</span>
 <span class="text-center" *ngIf="this.comienza"><h3>Puntos: {{this.puntaje}}</h3></span>
 
 <div class="contenedor" *ngIf="this.terminado">
@@ -51,4 +51,12 @@
 <button class="boton btn-block btn-white btn-lg" routerLink="../../../pages/juegos/lista"><h3>Volver</h3></button>
 </div>
 <div class="informe">Total de puntos: {{this.puntaje}}</div>
+<br><br>
+<button class="btn btn-block btn-lg btn-outline-success" routerLink="./../../encuesta">Desea realizar una breve encuesta?</button>
 </div>
+
+<div class="salir">
+  <button class="miBtn2" style="margin-top:5px;" (click)="traerPuntajes()">RESULTADOS</button>
+
+  </div>
+  <app-resultados *ngIf="this.puntajes" [listaResultados]="this.jugadores" (cerrado)="this.cerrandoResultados($event)"></app-resultados>

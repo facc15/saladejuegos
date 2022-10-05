@@ -1,0 +1,139 @@
+
+.contenedor{
+  background-color: rgb(175, 123, 12);
+}
+
+.cabecera{
+  background-image: url(../../../../assets/juegos/pokemon/pokemon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22%;
+  height: 100px;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+
+#tarjetas{
+
+  display:flex;
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
+#batalla{
+
+  display:flex;
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-image: url(../../../../assets/juegos/pokemon/batalla.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 37%;
+}
+
+.pokemon img{
+  width: 100%;
+
+}
+
+.informeRival{
+  position: fixed;
+  top: 190px;
+  left:10px;
+   color:whitesmoke;
+}
+
+.informe{
+  position: fixed;
+  bottom: 272px;
+  left:10px;
+}
+
+.pokemon{
+  width: 20%;
+  /*30 solo para izquierd y derecha*/
+  margin: 0 30px;
+  background-color: whitesmoke;
+  text-align: center;
+  border-radius: 15%;
+  border-color: black;
+  border:20px;
+  cursor: pointer;
+}
+
+
+.personaje{
+  width: 20%;
+  /*30 solo para izquierd y derecha*/
+  margin-top: 80px;
+  margin-left: 10px;
+  text-align: center;
+  border-radius: 15%;
+  border-color: black;
+  border:20px;
+  cursor: pointer;
+}
+
+.pokemon:active{
+  transform: scale(0.95);
+}
+
+#charmander:active{
+  color:whiteSmoke;
+ background-color: rgb(201, 40, 19);
+}
+
+
+#bulbasaur:active{
+  color:whiteSmoke;
+ background-color: green;
+}
+
+#squirtle:active{
+ background-color:rgb(38, 171, 211);
+ color:whiteSmoke;
+}
+
+.pokemon:hover{
+  transform: scale(0.97);
+}
+
+.movimiento:hover{
+  transform: scale(0.97);
+  cursor: pointer;
+  border-radius: 20%;
+}
+
+
+
+#bulbasaur{
+  color:green;
+}
+
+
+#charmander{
+  color:rgb(201, 40, 19);
+}
+
+#squirtle{
+  color:rgb(38, 171, 211);
+}
+
+.movimientos{
+  width: 100vw;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content:start;
+  align-items: center;
+}
+
+.movimiento{
+  background-color: whitesmoke;
+  width: 30%;
+  padding: 4px;
+  margin: 4px;
+  font-size: 20px;
+  text-align: center;
+}
