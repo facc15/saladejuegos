@@ -1,6 +1,6 @@
 .tablero{
   width: 70%;
-  height: 70%;
+  height: 80%;
   background-color: white;
   align-items: center;
   position: relative;
@@ -52,8 +52,8 @@ button:active{
 }
 
 .carta2{
-  bottom: 100px;
-  right: 202px;
+  bottom: 0px;
+  right: 60px;
 
   position: absolute;
 }
