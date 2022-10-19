@@ -1,5 +1,7 @@
 export interface Encuestado {
 
+  correo: string;
+  nombreDisplay: string;
   nombre: string;
   apellido: string;
   numero: string;

@@ -80,9 +80,16 @@ export class LoginComponent implements OnInit {
 
   guardarColeccion()
   {
-    this.auth.guardarColeccion(this.usuario.correo,this.usuario.pass);
+    this.auth.guardarColeccion(this.usuario);
   }
 
+  iniciarConAdmin()
+  {
+    this.spinner=true;
+    this.usuario.correo= 'admin@admin.com';
+    this.usuario.pass= '123123';
+    this.loguear(this.usuario);
+  }
 
 
 

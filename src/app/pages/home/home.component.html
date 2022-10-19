@@ -13,6 +13,8 @@
     <br><br>
     <button type="button" class="miBtn2" (click)="desloguear()">Cerrar sesión</button>
     <br><br>
+    <button type="button" class="miBtn2" *ngIf="this.admin" (click)="irAResultadosDeLaEncuesta()">Ver resultados de la encuesta</button>
+    <br><br>
 
 <div *ngIf="this.chatActivo">
   <app-chat></app-chat>

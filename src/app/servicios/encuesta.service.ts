@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { collectionData } from '@angular/fire/firestore';
 import { addDoc, collection } from 'firebase/firestore';
+import { Observable } from 'rxjs';
+import { Encuestado } from '../interfaces/encuestado';
 
 @Injectable({
   providedIn: 'root'
@@ -48,4 +51,13 @@ export class EncuestaService {
 
     }
   }
+
+  traerEncuesta(): Observable<Encuestado[]>
+  {
+    let placeRef=collection(this.afs.firestore,"Encuesta");
+    return collectionData(placeRef,{idField:'id'}) as Observable<Encuestado[]>;
+
+  }
+
+
 }

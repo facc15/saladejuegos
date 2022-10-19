@@ -38,7 +38,6 @@ if(user.displayName==null)
     return this.itemsCollections.valueChanges()
                                  .pipe(map((mensajes:Mensaje[])=>{
                                   this.mensajes=[];
-                                  console.log(mensajes);
                                   for(let mensaje of mensajes)
                                   {
                                     //insertar en la primer posición siempre.

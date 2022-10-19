@@ -32,11 +32,9 @@ export class RegistroComponent implements OnInit {
   registrar(miUsuario: Usuario) {
 
     setTimeout(() => {
-      this.auth.registrar(miUsuario.correo,miUsuario.pass).then((userC)=> {
+      this.auth.registrar(miUsuario).then((userC)=> {
         //this.inter.informeExito('Se registrÃ³ satisfactoriamente!!');
         this.spinner=false;
-        console.log(userC);
-
         this.router.navigateByUrl('home');
         }).catch(error=>{
           //this.inter.informeError('Usuario registrado');
@@ -58,6 +56,7 @@ export class RegistroComponent implements OnInit {
     this.usuario.correo=this.cargarUsuario.value.email;
     this.usuario.pass=this.cargarUsuario.value.pass;
     this.usuario.pass2= this.cargarUsuario.value.pass2;
+    this.usuario.perfil='invitado';
 
     if(this.usuario.pass!=this.usuario.pass2)
     {

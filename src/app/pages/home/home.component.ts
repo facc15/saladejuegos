@@ -1,10 +1,12 @@
+import { Usuario } from 'src/app/clases/usuario';
 import { ToastrService } from 'ngx-toastr';
-import { Usuario } from './../../clases/usuario';
+
 import { AuthService } from 'src/app/servicios/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs/internal/Observable';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +20,10 @@ export class HomeComponent implements OnInit {
   public registrar!: boolean;
   public chatActivo!: boolean;
 
+  public admin!:boolean;
   public user:any;
   public user$: Observable<any> =this.auth.afAuth.user;
+  public usuario$!: Observable<Usuario[]>;
 
 
   public spinner: boolean=false;
@@ -32,24 +36,38 @@ this.chatActivo=false;
 }
 
 async ngOnInit() {
-    this.user = await this.auth.getUserLog();
-    this.registrar=false;
-    if(!this.user)
-    {
-      this.loguear=true;
-    }else
-    {
+
+    this.afAuth.authState.subscribe(user=>{
+      if(!user)
+      {
+        this.loguear=true;
+        return;
+      }
       this.loguear=false;
+        this.auth.traerUsuarios().subscribe(res=>{
+          this.admin=false;
+          for(let item of res)
+          {
+            if(item.uid==user.uid)
+            {
+              if(item.perfil=="administrador")
+              {
+                this.admin=true;
+                break;
+              }
+            }
+          }
+        });
 
-    }
+      });
+
 }
-
-
 
 desloguear()
 {
   this.auth.desloguear();
   this.loguear=true;
+  this.admin=false;
   this.registrar=false;
 }
 
@@ -84,16 +102,9 @@ irASalaDeJuegos()
     this.registrar=false;
   }
 
-  irAError()
+  irAResultadosDeLaEncuesta()
   {
-    this.router.navigate(['/','error']);
-  }
-
-  estaRegistrado(newItem: Usuario)
-  {
-  }
-
-  estaLogueado(newItem: Usuario) {
+    this.router.navigateByUrl('pages/respuestas-encuesta');
   }
 
 }

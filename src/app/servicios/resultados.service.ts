@@ -1,5 +1,4 @@
 import { Jugador } from './../interfaces/jugador';
-import { User } from './../interfaces/user';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -20,7 +19,7 @@ export class ResultadosService {
       {
         return ;
       }
-     
+
         this.user.displayName= user.displayName;
         this.user.email= user.email;
         this.user.photoUrl= user.photoURL;
@@ -48,16 +47,16 @@ export class ResultadosService {
     }
   }
   async actualizarResultado(juego: string, puntaje: number) {
-    
+
     const placeRef = doc(this.afs.firestore,juego,this.user.id);
     await updateDoc(placeRef, { puntaje: puntaje } ).then(res=>{
     });
   }
 
-  
+
   async guardarResultadoPokemon(juego: string,victorias: number,derrotas: number)
   {
-   
+
       try {
         const docRef = await addDoc(collection(this.afs.firestore,juego), {
           victorias: victorias,
@@ -71,13 +70,13 @@ export class ResultadosService {
         this.user.id=docRef.id;
       } catch (e) {
         console.error("Error al agregar document: ", e);
-  
+
       }
-    
+
   }
 
   async actualizarResultadoPokemon(gano: boolean,juego: string, puntaje:number) {
-    
+
     if(gano)
     {
       const placeRef = doc(this.afs.firestore,juego,this.user.id);
@@ -87,8 +86,8 @@ export class ResultadosService {
       const placeRef = doc(this.afs.firestore,juego,this.user.id);
       await updateDoc(placeRef, { derrotas: puntaje } );
     }
-    
-    
+
+
   }
   traerResultados(juego: string): Observable<Jugador[]>
   {

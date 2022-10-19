@@ -1,0 +1,34 @@
+<div class="contenedorSpinner" *ngIf="this.spinner">
+  <app-spinner class="spinner"></app-spinner>
+</div>
+<div>
+<table class="table text-white text-center overflow-auto" style="background-color:darkslategray; cursor:pointer;"  *ngIf="this.encuestados">
+  <thead>
+  <tr>
+    <th><strong>Nombre</strong></th>
+    <th><strong>Apellido</strong></th>
+    <th><strong>Correo</strong></th>
+    <th><strong>Numero telefónico</strong></th>
+    <th><strong>Pregunta 1</strong></th>
+    <th><strong>Pregunta 2</strong></th>
+    <th><strong>Pregunta 3</strong></th>
+
+  </tr>
+</thead>
+  <tbody>     <div class="salir">
+  </div>
+
+  <tr *ngFor="let item of this.encuestados" >
+    <td>{{item.nombre}}</td>
+    <td>{{item.apellido }}</td>
+    <td>{{item.correo}}</td>
+    <td>{{item.numero}}</td>
+    <td>{{item.pregunta1}}</td>
+    <td>{{item.pregunta2}}</td>
+    <td>{{item.pregunta3}}</td>
+  </tr>
+</tbody>
+
+  </table>
+  <button class="btn btn-block text-white btn-lg" style="background-color:darkslategray;" (click)="volver()">Volver</button>
+</div>

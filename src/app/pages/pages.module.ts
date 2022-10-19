@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { EncuestaComponent } from './encuesta/encuesta.component';
+import { RespuestasEncuestaComponent } from './respuestas-encuesta/respuestas-encuesta.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { EncuestaComponent } from './encuesta/encuesta.component';
     HomeComponent,
     QuiensoyComponent,
     EncuestaComponent,
+    RespuestasEncuestaComponent,
 
   ],
   imports: [

@@ -1,3 +1,4 @@
+import { Usuario } from 'src/app/clases/usuario';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore} from '@angular/fire/compat/firestore';
@@ -5,11 +6,13 @@ import * as firebase from 'firebase/app';
 import { getAuth, getIdToken, onAuthStateChanged, User, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { first } from 'rxjs/operators';
 //firestore
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, getDoc, query, where, getDocs } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { collectionData } from '@angular/fire/firestore';
+import { Observable, map } from 'rxjs';
 
 
 @Injectable({
@@ -19,6 +22,8 @@ export class AuthService {
 
 
   public miUser :any={};
+  public doc: any;
+  public usuarios!: Usuario[];
   public token !: string;
 
   constructor(private router: Router,private afs:AngularFirestore, public afAuth: AngularFireAuth, private toastr: ToastrService) {
@@ -39,26 +44,13 @@ export class AuthService {
     })
   }
 
-  async guardarColeccion(correo: string, pass: string)
-  {
-    try {
-      const docRef = await addDoc(collection(this.afs.firestore,"Usuarios"), {
-        correo: correo,
-        pass: pass,
-        fecha: new Date(),
-      });
-      console.log("Documento escrito en colección: ", docRef.id);
 
-    } catch (e) {
-      console.error("Error al agregar document: ", e);
-
-    }
-  }
 
   loguearGoogle()
   {
-    this.afAuth.signInWithPopup(new GoogleAuthProvider).then(()=>{
+    this.afAuth.signInWithPopup(new GoogleAuthProvider).then((algo)=>{
     console.log("Se logueo bien con google");
+    console.log(algo);
     this.router.navigateByUrl('home');
     }).catch((error)=>{console.log(error)});
   }
@@ -74,7 +66,6 @@ export class AuthService {
         progressAnimation: 'increasing',
         positionClass: 'toast-top-center'
         });
-      console.log(user);
     }).catch((error)=>{console.log(error)
       this.toastr.error(this.firebaseError(error.code),'Error',{
         timeOut: 1500,
@@ -87,13 +78,14 @@ export class AuthService {
 }
 
 
-  async registrar(email:string, password:string){
+  async registrar(usuario: Usuario){
 
     try{
 
-      const resultado= await this.afAuth.createUserWithEmailAndPassword(email,password).then(async (user)=>{
+      const resultado= await this.afAuth.createUserWithEmailAndPassword(usuario.correo,usuario.pass).then(async (user)=>{
         console.log("user: "+user);
-        const coleccion=await this.guardarColeccion(email,password);
+        usuario.uid= user.user?.uid;
+        const coleccion=await this.guardarColeccion(usuario);
         this.toastr.success('El usuario se registró satistactoriamente', 'Exito',{
           timeOut: 1000,
           progressAnimation: 'increasing',
@@ -114,6 +106,46 @@ export class AuthService {
       return "error";
     }
     return "";
+  }
+
+  async guardarColeccion(usuario: Usuario)
+  {
+    try {
+      const docRef = await addDoc(collection(this.afs.firestore,"Usuarios"), {
+        uid: usuario.uid,
+        correo: usuario.correo,
+        pass: usuario.pass,
+        fecha: new Date(),
+        perfil: usuario.perfil,
+      });
+      console.log("Documento escrito en colección: ", docRef.id);
+
+    } catch (e) {
+      console.error("Error al agregar document: ", e);
+
+    }
+  }
+
+
+  traerUsuarios(): Observable<Usuario[]>
+  {
+    let placeRef=collection(this.afs.firestore,"Usuarios");
+    return collectionData(placeRef,{idField:'id'}) as Observable<Usuario[]>;
+
+  }
+
+  async traerUsuario(id: string)
+  {
+    const q= query(collection(this.afs.firestore,'Usuarios'), where('uid','==',id));
+    const querySnapshot = await getDocs(q);
+
+    const docu= await querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      //console.log(doc.id, " => ", doc.data());
+    this.doc= doc.data();
+    });
+
+    return this.doc;
   }
 
 
@@ -148,6 +180,8 @@ export class AuthService {
           }
 
   }
+
+
 
   getUserLog(){
     return this.afAuth.authState.pipe(first()).toPromise();

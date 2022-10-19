@@ -1,0 +1,13 @@
+.contenedorSpinner{
+  position: relative;
+  width: 100vw;
+  height: 40%;
+  align-items: center;
+  background-color: darkslategray;
+}
+
+.spinner{
+  top:180px;
+  left:590px;
+  position:absolute;
+}
